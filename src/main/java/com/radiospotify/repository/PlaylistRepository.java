@@ -8,13 +8,5 @@ import java.util.List;
 
 public interface PlaylistRepository extends JpaRepository<Playlist, Long> {
     List<Playlist> findByRadioId(Long radioId);
-
-
-        @Query("SELECT p FROM Playlist p WHERE LOWER(p.nome) LIKE LOWER(CONCAT('%', :termo, '%'))")
-        List<Playlist> findByNomeContainingIgnoreCase(@Param("termo") String termo);
-
-        @Query("SELECT p FROM Playlist p WHERE LOWER(p.nome) LIKE LOWER(CONCAT('%', :termo, '%')) OR " +
-                "LOWER(p.descricao) LIKE LOWER(CONCAT('%', :termo, '%'))")
-        List<Playlist> searchPlaylists(@Param("termo") String termo);
-
+    List<Playlist> findByNomeContainingIgnoreCase(String nome);
 }
