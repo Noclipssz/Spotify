@@ -1,6 +1,5 @@
 package com.radiospotify.model;
 
-import jakarta.persistence.Entity;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
