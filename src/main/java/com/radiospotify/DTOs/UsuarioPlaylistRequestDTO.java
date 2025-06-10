@@ -1,26 +1,12 @@
+// src/main/java/com/radiospotify/DTOs/UsuarioPlaylistRequestDTO.java
 package com.radiospotify.DTOs;
 
-public class PlaylistDTO {
-    private Long id;
+public class UsuarioPlaylistRequestDTO {
     private String nome;
     private String descricao;
     private String capaUrl;
 
-    public PlaylistDTO(Long id, String nome, String descricao, String capaUrl) {
-    }
-
-    public PlaylistDTO() {
-
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
+    // Getters e Setters
     public String getNome() {
         return nome;
     }

@@ -9,4 +9,5 @@ import java.util.List;
 public interface PlaylistRepository extends JpaRepository<Playlist, Long> {
     List<Playlist> findByRadioId(Long radioId);
     List<Playlist> findByNomeContainingIgnoreCase(String nome);
+    List<Playlist> findById(int id);
 }

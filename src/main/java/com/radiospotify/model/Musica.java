@@ -14,6 +14,7 @@ public class Musica {
     private Double duracaoSegundos;
     private String urlStream;
     private String capaUrl;
+    private String tipo;
 
     @ManyToOne
     @JoinColumn(name = "playlist_id")
@@ -31,6 +32,8 @@ public class Musica {
     public void setUrlStream(String urlStream) { this.urlStream = urlStream; }
     public String getCapaUrl() { return capaUrl; }
     public void setCapaUrl(String capaUrl) { this.capaUrl = capaUrl; }
+    public String getTipo() { return tipo; }
+    public void setTipo(String tipo) { this.tipo = tipo; }
     public Playlist getPlaylist() { return playlist; }
     public void setPlaylist(Playlist playlist) { this.playlist = playlist; }
 }
