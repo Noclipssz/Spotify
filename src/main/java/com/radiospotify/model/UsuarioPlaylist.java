@@ -1,67 +1,53 @@
-// src/main/java/com/radiospotify/model/UsuarioPlaylist.java
 package com.radiospotify.model;
+
 
 import jakarta.persistence.*;
 
+
+
 @Entity
-@Table(name = "usuario_playlist")
+@Table(name = "usuario_playlist", schema = "radio_spotify")
 public class UsuarioPlaylist {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "nome", nullable = false)
     private String nome;
+
+    @Column(name = "descricao")
     private String descricao;
+
+    @Column(name = "capa_url")
     private String capaUrl;
 
-    @ManyToOne
-    @JoinColumn(name = "usuario_id", nullable = false)
-    private User usuario;
+    @Column(name = "usuario_id", nullable = false)
+    private Long usuarioId;
 
-    // Construtores
+    // Constructors
     public UsuarioPlaylist() {}
 
-    public UsuarioPlaylist(String nome, String descricao, String capaUrl, User usuario) {
+    public UsuarioPlaylist(String nome, String descricao, String capaUrl, Long usuarioId) {
         this.nome = nome;
         this.descricao = descricao;
         this.capaUrl = capaUrl;
-        this.usuario = usuario;
+        this.usuarioId = usuarioId;
     }
 
-    // Getters e Setters
-    public Long getId() {
-        return id;
-    }
+    // Getters and Setters
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
 
-    public String getNome() {
-        return nome;
-    }
+    public String getNome() { return nome; }
+    public void setNome(String nome) { this.nome = nome; }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+    public String getDescricao() { return descricao; }
+    public void setDescricao(String descricao) { this.descricao = descricao; }
 
-    public String getDescricao() {
-        return descricao;
-    }
+    public String getCapaUrl() { return capaUrl; }
+    public void setCapaUrl(String capaUrl) { this.capaUrl = capaUrl; }
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
-
-    public String getCapaUrl() {
-        return capaUrl;
-    }
-
-    public void setCapaUrl(String capaUrl) {
-        this.capaUrl = capaUrl;
-    }
-
-    public User getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(User usuario) {
-        this.usuario = usuario;
-    }
+    public Long getUsuarioId() { return usuarioId; }
+    public void setUsuarioId(Long usuarioId) { this.usuarioId = usuarioId; }
 }

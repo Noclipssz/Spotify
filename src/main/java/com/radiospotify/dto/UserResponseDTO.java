@@ -1,4 +1,4 @@
-package com.radiospotify.DTOs;
+package com.radiospotify.dto;
 
 public class UserResponseDTO {
     private Long id;

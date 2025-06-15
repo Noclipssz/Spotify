@@ -1,25 +1,24 @@
-package com.radiospotify.DTOs;
+package com.radiospotify.dto;
 
-public class PlaylistFavoritaDTO {
+public class UsuarioPlaylistResponseDTO {
     private Long id;
     private String nome;
     private String descricao;
     private String capaUrl;
-    private Boolean favorita;
+    private Long usuarioId;
 
-    // Default constructor (required by JPA)
-    public PlaylistFavoritaDTO() {}
+    // Constructors
+    public UsuarioPlaylistResponseDTO() {}
 
-    // Constructor for JPQL queries
-    public PlaylistFavoritaDTO(Long id, String nome, String descricao, String capaUrl, Boolean favorita) {
+    public UsuarioPlaylistResponseDTO(Long id, String nome, String descricao, String capaUrl, Long usuarioId) {
         this.id = id;
         this.nome = nome;
         this.descricao = descricao;
         this.capaUrl = capaUrl;
-        this.favorita = favorita;
+        this.usuarioId = usuarioId;
     }
 
-    // Getters and setters
+    // Getters and Setters
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 
@@ -32,6 +31,7 @@ public class PlaylistFavoritaDTO {
     public String getCapaUrl() { return capaUrl; }
     public void setCapaUrl(String capaUrl) { this.capaUrl = capaUrl; }
 
-    public Boolean getFavorita() { return favorita; }
-    public void setFavorita(Boolean favorita) { this.favorita = favorita; }
+    public Long getUsuarioId() { return usuarioId; }
+    public void setUsuarioId(Long usuarioId) { this.usuarioId = usuarioId; }
 }
+

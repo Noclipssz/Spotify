@@ -1,26 +1,36 @@
-// src/main/java/com/radiospotify/model/UsuarioPlaylistFavoritaId.java
 package com.radiospotify.model;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 public class UsuarioPlaylistFavoritaId implements Serializable {
-    private Long usuario;
-    private Long playlist;
+    private Long usuarioId;
+    private Long playlistId;
 
-    // Getters e Setters
-    public Long getUsuario() {
-        return usuario;
+    public UsuarioPlaylistFavoritaId() {}
+
+    public UsuarioPlaylistFavoritaId(Long usuarioId, Long playlistId) {
+        this.usuarioId = usuarioId;
+        this.playlistId = playlistId;
     }
 
-    public void setUsuario(Long usuario) {
-        this.usuario = usuario;
+    // Getters, Setters, equals, hashCode
+    public Long getUsuarioId() { return usuarioId; }
+    public void setUsuarioId(Long usuarioId) { this.usuarioId = usuarioId; }
+
+    public Long getPlaylistId() { return playlistId; }
+    public void setPlaylistId(Long playlistId) { this.playlistId = playlistId; }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        UsuarioPlaylistFavoritaId that = (UsuarioPlaylistFavoritaId) o;
+        return Objects.equals(usuarioId, that.usuarioId) && Objects.equals(playlistId, that.playlistId);
     }
 
-    public Long getPlaylist() {
-        return playlist;
-    }
-
-    public void setPlaylist(Long playlist) {
-        this.playlist = playlist;
+    @Override
+    public int hashCode() {
+        return Objects.hash(usuarioId, playlistId);
     }
 }

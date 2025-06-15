@@ -1,8 +1,8 @@
 package com.radiospotify.service;
 
-import com.radiospotify.DTOs.UserCreateDTO;
-import com.radiospotify.DTOs.UserLoginDTO;
-import com.radiospotify.DTOs.UserResponseDTO;
+import com.radiospotify.dto.UserCreateDTO;
+import com.radiospotify.dto.UserLoginDTO;
+import com.radiospotify.dto.UserResponseDTO;
 import com.radiospotify.model.User;
 import com.radiospotify.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;

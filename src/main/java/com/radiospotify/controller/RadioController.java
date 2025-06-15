@@ -1,8 +1,8 @@
 package com.radiospotify.controller;
 
-import com.radiospotify.DTOs.MusicaDTO;
-import com.radiospotify.DTOs.PlaylistDTO;
-import com.radiospotify.DTOs.RadioDTO;
+import com.radiospotify.dto.MusicaDTO;
+import com.radiospotify.dto.PlaylistDTO;
+import com.radiospotify.dto.RadioDTO;
 import com.radiospotify.model.Musica;
 import com.radiospotify.model.Playlist;
 import com.radiospotify.model.Radio;

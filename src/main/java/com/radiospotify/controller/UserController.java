@@ -1,9 +1,9 @@
 package com.radiospotify.controller;
 
-
-import com.radiospotify.DTOs.UserCreateDTO;
-import com.radiospotify.DTOs.UserLoginDTO;
-import com.radiospotify.DTOs.UserResponseDTO;
+import com.radiospotify.dto.UserCreateDTO;
+import com.radiospotify.dto.UserLoginDTO;
+import com.radiospotify.dto.UserResponseDTO;
+import com.radiospotify.security.JwtUtil;
 import com.radiospotify.service.UserService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +21,9 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private JwtUtil jwtUtil;
 
     @PostMapping("/register")
     public ResponseEntity<?> registerUser(@Valid @RequestBody UserCreateDTO userCreateDTO) {
@@ -48,10 +51,14 @@ public class UserController {
         try {
             UserResponseDTO user = userService.authenticateUser(loginDTO);
 
+            // Gerar token JWT
+            String token = jwtUtil.generateToken(user.getEmail(), user.getId());
+
             Map<String, Object> response = new HashMap<>();
             response.put("success", true);
             response.put("message", "Login realizado com sucesso");
             response.put("user", user);
+            response.put("token", token);
 
             return ResponseEntity.ok(response);
 
@@ -61,6 +68,27 @@ public class UserController {
             response.put("message", e.getMessage());
 
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(response);
+        }
+    }
+
+    // Endpoint protegido para testar
+    @GetMapping("/profile")
+    public ResponseEntity<?> getUserProfile() {
+        try {
+            // Aqui você pode pegar o usuário autenticado do SecurityContext
+            // String email = SecurityContextHolder.getContext().getAuthentication().getName();
+
+            Map<String, Object> response = new HashMap<>();
+            response.put("success", true);
+            response.put("message", "Perfil acessado com sucesso");
+
+            return ResponseEntity.ok(response);
+        } catch (Exception e) {
+            Map<String, Object> response = new HashMap<>();
+            response.put("success", false);
+            response.put("message", "Erro ao acessar perfil");
+
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
     }
 }
