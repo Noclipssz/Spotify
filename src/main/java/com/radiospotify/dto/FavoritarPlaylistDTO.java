@@ -18,4 +18,3 @@ public class FavoritarPlaylistDTO {
     public Long getPlaylistId() { return playlistId; }
     public void setPlaylistId(Long playlistId) { this.playlistId = playlistId; }
 }
-

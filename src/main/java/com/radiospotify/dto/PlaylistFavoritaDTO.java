@@ -1,31 +1,17 @@
-package com.radiospotify.model;
+package com.radiospotify.dto;
 
-import jakarta.persistence.*;
-
-@Entity
-@Table(name = "usuario_playlist", schema = "radio_spotify")
-public class UsuarioPlaylist {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @Column(name = "nome", nullable = false)
+public class PlaylistFavoritaDTO {
+    private Long playlistId;
     private String nome;
-
-    @Column(name = "descricao")
     private String descricao;
-
-    @Column(name = "capa_url")
     private String capaUrl;
-
-    @Column(name = "usuario_id", nullable = false)
     private Long usuarioId;
 
     // Constructors
-    public UsuarioPlaylist() {}
+    public PlaylistFavoritaDTO() {}
 
-    public UsuarioPlaylist(String nome, String descricao, String capaUrl, Long usuarioId) {
+    public PlaylistFavoritaDTO(Long playlistId, String nome, String descricao, String capaUrl, Long usuarioId) {
+        this.playlistId = playlistId;
         this.nome = nome;
         this.descricao = descricao;
         this.capaUrl = capaUrl;
@@ -33,8 +19,8 @@ public class UsuarioPlaylist {
     }
 
     // Getters and Setters
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
+    public Long getPlaylistId() { return playlistId; }
+    public void setPlaylistId(Long playlistId) { this.playlistId = playlistId; }
 
     public String getNome() { return nome; }
     public void setNome(String nome) { this.nome = nome; }

@@ -14,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -41,7 +42,21 @@ public class RadioController {
                 .collect(Collectors.toList());
         return ResponseEntity.ok(radioDTOs);
     }
-    @CrossOrigin("*")
+
+    @GetMapping("/grouped")
+    public ResponseEntity<Map<String, List<RadioDTO>>> getRadiosGrouped() {
+        List<Radio> radios = radioRepository.findAll();
+
+        // Agrupa por tipo usando Stream API e converte para DTO
+        Map<String, List<RadioDTO>> grouped = radios.stream()
+                .collect(Collectors.groupingBy(radio ->
+                                radio.getTipo() != null ? radio.getTipo() : "outros",
+                        Collectors.mapping(this::convertToRadioDTO, Collectors.toList())
+                ));
+
+        return ResponseEntity.ok(grouped);
+    }
+
     @GetMapping("/{radioId}/playlists")
     public ResponseEntity<List<PlaylistDTO>> getPlaylistsByRadio(@PathVariable Long radioId) {
         if (!radioRepository.existsById(radioId)) {
@@ -53,7 +68,7 @@ public class RadioController {
                 .collect(Collectors.toList());
         return ResponseEntity.ok(playlistDTOs);
     }
-    @CrossOrigin("*")
+
     @GetMapping("/{radioId}/playlists/{playlistId}/musicas")
     public ResponseEntity<List<MusicaDTO>> getMusicasByPlaylist(
             @PathVariable Long radioId,
@@ -75,6 +90,9 @@ public class RadioController {
         dto.setId(radio.getId());
         dto.setNome(radio.getNome());
         dto.setCapaUrl(radio.getCapaUrl());
+
+        // Define valor padrão "outros" se tipo for null
+        dto.setTipo(radio.getTipo() != null ? radio.getTipo() : "outros");
 
         if (radio.getPlaylists() != null && !radio.getPlaylists().isEmpty()) {
             dto.setPlaylists(radio.getPlaylists().stream()

@@ -1,29 +1,25 @@
 package com.radiospotify.dto;
 
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
-
-public class CreateUsuarioPlaylistDTO {
-
-    @NotBlank(message = "Nome é obrigatório")
-    @Size(max = 255, message = "Nome deve ter no máximo 255 caracteres")
+public class PlaylistFavoritaSemUsuarioDTO {
+    private Long playlistId;
     private String nome;
-
-    @Size(max = 500, message = "Descrição deve ter no máximo 500 caracteres")
     private String descricao;
-
     private String capaUrl;
 
     // Constructors
-    public CreateUsuarioPlaylistDTO() {}
+    public PlaylistFavoritaSemUsuarioDTO() {}
 
-    public CreateUsuarioPlaylistDTO(String nome, String descricao, String capaUrl) {
+    public PlaylistFavoritaSemUsuarioDTO(Long playlistId, String nome, String descricao, String capaUrl) {
+        this.playlistId = playlistId;
         this.nome = nome;
         this.descricao = descricao;
         this.capaUrl = capaUrl;
     }
 
     // Getters and Setters
+    public Long getPlaylistId() { return playlistId; }
+    public void setPlaylistId(Long playlistId) { this.playlistId = playlistId; }
+
     public String getNome() { return nome; }
     public void setNome(String nome) { this.nome = nome; }
 
@@ -33,3 +29,4 @@ public class CreateUsuarioPlaylistDTO {
     public String getCapaUrl() { return capaUrl; }
     public void setCapaUrl(String capaUrl) { this.capaUrl = capaUrl; }
 }
+
