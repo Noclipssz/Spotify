@@ -65,23 +65,13 @@ public class SecurityConfig {
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
 
-        // Especifique as origens exatas ao invés de usar "*"
-        configuration.setAllowedOrigins(Arrays.asList(
-                "http://localhost:3001",
-                "131.72.49.75",
-                "https://projeto-spotify-jqa229igy-kairodevs-projects.vercel.app/",
-                "projeto-spotify-om7v-jyr9s5qqp-kairodevs-projects.vercel.app",// substitua pela URL do seu frontend
-                "https://outro-dominio.com",
-                "*"// adicione outros domínios conforme necessário
-        ));
-
+        configuration.setAllowedOriginPatterns(Arrays.asList("*"));
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         configuration.setAllowedHeaders(Arrays.asList("*"));
-        configuration.setAllowCredentials(true);
+        configuration.setAllowCredentials(false); // IMPORTANTE: false quando usar "*"
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
         return source;
     }
-
 }

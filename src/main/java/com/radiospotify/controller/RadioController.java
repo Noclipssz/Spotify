@@ -11,6 +11,7 @@ import com.radiospotify.repository.PlaylistRepository;
 import com.radiospotify.repository.RadioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,7 +19,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/api/radios")
 public class RadioController {
