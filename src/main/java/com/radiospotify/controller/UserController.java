@@ -15,7 +15,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-@CrossOrigin("*")
+@CrossOrigin(origins ="*")
 
 @RestController
 @RequestMapping("/users")

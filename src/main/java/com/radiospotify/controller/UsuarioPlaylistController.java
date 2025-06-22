@@ -13,7 +13,7 @@ import java.util.HashMap;
 
 
 
-@CrossOrigin("*")
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api")
 public class UsuarioPlaylistController {
