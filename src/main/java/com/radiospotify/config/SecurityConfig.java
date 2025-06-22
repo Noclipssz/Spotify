@@ -39,6 +39,7 @@ public class SecurityConfig {
 
                         // Endpoints públicos
                         .requestMatchers("/api/**").permitAll()
+                        .requestMatchers("/test").permitAll()
                         .requestMatchers("/users/profile").permitAll()
 
 
@@ -67,8 +68,11 @@ public class SecurityConfig {
         // Especifique as origens exatas ao invés de usar "*"
         configuration.setAllowedOrigins(Arrays.asList(
                 "http://localhost:3001",
-                "https://projeto-spotify-jqa229igy-kairodevs-projects.vercel.app/", // substitua pela URL do seu frontend
-                "https://outro-dominio.com"  // adicione outros domínios conforme necessário
+                "131.72.49.75",
+                "https://projeto-spotify-jqa229igy-kairodevs-projects.vercel.app/",
+                "projeto-spotify-om7v-jyr9s5qqp-kairodevs-projects.vercel.app",// substitua pela URL do seu frontend
+                "https://outro-dominio.com",
+                "*"// adicione outros domínios conforme necessário
         ));
 
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
